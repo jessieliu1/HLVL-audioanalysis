@@ -1,0 +1,63 @@
+1. audio data is extracted using ffmpeg and converted to wav and mp4. mp3 is not used as before to prevent loss due to compression 
+
+2. The following data will be extracted from  :
+
+Energy
+Spectral 
+Linear Predictive Coding (LPC)
+Perceptual Linear Prediction Cepstral Coefficients (PLPCC)
+Chroma feature vector (vector of pitch classes)
+chroma deviations 
+d-vector
+
+
+3. VGGish model was taken from the pretrained samples
+
+4. hop length was modified for bggish input so that the last 0.04 seconds of audio are chopped as model expects 0.96 second input
+
+5. embeddings are populated using this mehod for the data
+
+6. data is cleaned to have a time frame of 1 second for an embedding
+
+7. tried pca with SVM and knn no improvement (actually lower of close to .56)
+
+8. continuing gestures are not detected (sustain and fading of the voice with gesture)
+
+
+TODO sutain and fade of voice
+
+analyze failures of the svm cases
+analyze the intuition for the features
+try the dimensionality reduction with PCA and train using those
+
+#PCA doesn't seem to improve the value of the accuracy so our innitial 20 features perform much better
+
+TODO 7/11/18
+
+Find original sounds that are like gesture speech are lighting up the same features and understand them
+find interesting audio in question windows in the videos
+try to annotate other videoes and try to see the result
+
+#we can see that there is more voice modulation in the places where we can detect a gesture high versus low frequency
+#
+
+TODO 14/11/18
+
+Try find the difference in the score between the gestures that we can detect and gestures that we can't detect and see if it affects the scores 
+onesided pared t tests done but might not be conclusive
+
+
+ALso do lit survey to understand if there is a relation between modualtion and attention and gesture
+Voice should be modulated
+https://books.google.com/books?hl=en&lr=&id=3l-HIxa9a9AC&oi=fnd&pg=PR5&dq=efficient+public+speaking+voice&ots=ARC2kX5jXs&sig=iP8ASSM6F2lU1MHhDbR-TxIxqF8#v=onepage&q=efficient%20public%20speaking%20voice&f=false
+https://link.springer.com/article/10.3758/APP.72.2.279
+
+more study on content than on voice . if there is then no backing as such
+
+
+See speech vs gesture under different gesture types (bicycle and perspective)
+
+
+28/11/18
+- talk about the test partition quality (p values of 1,2,5 and 3,4,6)
+- retrain the data into different gestures and see how that performs
